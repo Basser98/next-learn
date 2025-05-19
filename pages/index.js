@@ -2,9 +2,7 @@ import axios from 'axios';
 
 export async function getServerSideProps() {
   // 用你的 NoCodeAPI 链接替换下面的 URL
-  const res = await axios.get(
-    'https://v1.nocodeapi.com/basser/google_sheets/LlXZzdsWmoYhiNkt?tabId=BuyOnceList',
-  );
+  const res = await axios.get(process.env.NOCODE_API_URL);
   const products = res.data.data; // NoCodeAPI 的返回格式
 
   return { props: { products } };
