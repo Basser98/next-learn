@@ -1,11 +1,15 @@
 import axios from 'axios';
 
 export async function getServerSideProps() {
-  // 用你的 NoCodeAPI 链接替换下面的 URL
-  const res = await axios.get(process.env.NOCODE_API_URL);
-  const products = res.data.data; // NoCodeAPI 的返回格式
-
-  return { props: { products } };
+  try {
+    const res = await axios.get(process.env.NOCODE_API_URL);
+    const products = res.data.data;
+    return { props: { products } };
+  } catch (err) {
+    console.error('API 调用出错:', err.message, err?.response?.data);
+    // 你可以返回空数组或者返回一个错误页
+    return { props: { products: [] } };
+  }
 }
 
 export default function HomePage({ products }) {
