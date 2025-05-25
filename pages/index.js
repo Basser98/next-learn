@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { ProductCard } from '../components/ProductCard';
 
 export async function getServerSideProps() {
   try {
@@ -14,29 +15,13 @@ export async function getServerSideProps() {
 
 export default function HomePage({ products }) {
   return (
-    <div className="p-8">
-      <h1 className="mb-4 text-xl font-bold">Buy Once 产品目录</h1>
-      {products && products.length > 0 ? (
-        <ul>
-          {products.map((prod, i) => (
-            <li key={i} className="mb-4">
-              <a
-                href={prod.Homepage}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-semibold text-blue-600"
-              >
-                {prod.Name}
-              </a>
-              {' — '}
-              {prod.Type} | {prod.Platform} | ¥{prod.Price}
-              <div className="text-sm text-gray-500">{prod.Description}</div>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p>暂无产品</p>
-      )}
+    <div className="mx-auto max-w-3xl p-8">
+      <h1 className="mb-8 text-2xl font-bold">Buy Once 产品目录</h1>
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+        {products.map((product) => (
+          <ProductCard key={product.Name} product={product} />
+        ))}
+      </div>
     </div>
   );
 }
