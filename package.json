@@ -16,6 +16,7 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@types/react": "^19.1.6",
     "@vercel/style-guide": "^5.0.1",
     "eslint": "8.52.0",
     "eslint-config-next": "14.0.0",
