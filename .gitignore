@@ -1,3 +1,6 @@
 *.log
 .DS_Store
 node_modules
+
+# Next.js 构建产物
+.next/
